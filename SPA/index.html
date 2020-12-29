@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pl">
 
 <head>
     <meta charset="UTF-8">
@@ -12,24 +12,22 @@
 </head>
 
 <body>
-    <header>
+    <header class="header__wrap">
         <div class="wrapper">
             <nav class="nav__bar">
                 <div class="photo-logo">
                     <img src="/static/assets/camera-icon-with.png" alt="photo_camera">
                     <p class="photo">Photo Studio</p>
                 </div>
-                <!-- <button class="bars"><span class="bars__line"></span></button> -->
-                <ul>
-                    <li><a href="/" class="nav__link" data-link>Home</a></li>
-                    <li><a href="/about" class="nav__link" data-link>About</a></li>
-                    <li><a href="/portfolio" class="nav__link" data-link>Portfolio</a></li>
-                    <li><a href="/kontakt" class="nav__link" data-link>Contact</a></li>
+                <div class="nav__bar__content">
+                <button class="bars"></button>
+                <ul class="nav__bar__links">
+                    <li class="nav__bar__link"><a href="/" class="nav__link" data-link>Home</a></li>
+                    <li class="nav__bar__link"><a href="/about" class="nav__link" data-link>About</a></li>
+                    <li class="nav__bar__link"><a href="/portfolio" class="nav__link" data-link>Portfolio</a></li>
+                    <li class="nav__bar__link"><a href="/kontakt" class="nav__link" data-link>Contact</a></li>
                 </ul>
-                <div class="social-media">
-                    <a href="#" id="facebook"></a>
-                    <a href="#" id="instagram"></a>
-                </div>
+            </div>
             </nav>
         </div>
     </header>
@@ -40,6 +38,10 @@
     </main>
     <footer>
         <p>All content Copyright &copy; 2020 Photo Studio</p>
+        <div class="social-media">
+            <a href="#" id="facebook"></a>
+            <a href="#" id="instagram"></a>
+        </div>
     </footer>
 
     <script type="module" src="/static/js/index.js"></script>
