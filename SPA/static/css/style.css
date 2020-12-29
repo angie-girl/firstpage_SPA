@@ -1,51 +1,88 @@
 * {
     margin: 0;
     padding: 0;
-    /* box-sizing: border-box; */
+    box-sizing: border-box;
 }
 
 body {
-    /* height: 300vh; */
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    width: 100vw;
+    display: block;
+    font-family: 'Montserrat', sans-serif;
 
 }
 
-header {
-    position: relative;
-    width: 100vw;
-    /* height: 120vh; */
+.header__wrap {
+    /* height: 100vh; */
+    z-index: 2;
 }
 
 .wrapper {
     background-color: rgba(250, 250, 250, 0.3);
-    padding-left: 100px;
+    margin: 0 auto;
+    padding: 0 20px;
+    max-width: 1390px;
 }
 
-.nav__bar {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 5fr 5fr 2fr;
+.bars {
+    width: 30px;
+    height: 19px;
+    border: 0;
+    border-top: 3px solid #000;
+    background-color: transparent;
+    position: relative;
+    transition: 0.3s transform linear;
+}
+
+.bars::before,
+.bars::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-top: 3px solid #000;
+    transform: translateY(5px);
+}
+
+.bars::after {
+    transform: translateY(13px);
+    transition: 0.3s transform linear;
+}
+
+.bars--active {
+    transform: rotate(45deg) translateY(5px);
+    border: none;
+}
+
+.bars--active::after {
+    transform: rotate(-90deg) translateY(-10px);
+}
+
+ .nav__bar {
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
 
 }
 
-.nav__bar ul {
+.nav__bar__links {
     list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0 5px 0 30px;
-    /* background-color: red; */
+    z-index: 2;
+    position: relative;
+    display: none;
+}
+
+.nav__bar__links--active {
+    display: flex !important;
 }
 
 .nav__bar a {
+    display: block;
     line-height: 72px;
     font-size: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: black;
     text-decoration: none;
-    padding: 0 15px 5px 15px;
+    /* padding: 0 15px 5px 15px; */
 }
 
 .nav__bar a:hover {
@@ -54,66 +91,82 @@ header {
 }
 
 .photo-logo {
-    display: flex;
-    justify-content: left;
+    display: inline-block;
+    height: 30px;
+    position: relative;
 }
 
 img {
-    width: 30px;
+    position: relative;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 40px;
     padding-right: 10px;
 }
 
 .photo {
-    font-size: 20px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-#facebook {
-    background-image: url(../assets/facebook-brands.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    margin-right: 30px;
-    border-bottom: none;
-}
-
-#instagram {
-    background-image: url(../assets/instagram-brands.svg);
-    background-size: contain;
-    background-repeat: no-repeat;
-    border-bottom: none;
+    display: inline-block;
+    font-size: 22px;
 }
 
 /* home */
 
 #app .video-container {
     object-fit: cover;
+    position: relative;
     /* position: absolute; */
-    /* top: 20vh; */
-    /* left: 0; */
+    top: 0;
+    left: 0;
     /* z-index: -1; */
+    height: 100vh;
+    overflow-x: hidden;
 }
 
 #app #background-video {
-    width: 100%;
-    height: auto;
-    overflow-y: hidden;
-    position: relative;
+    position: absolute;
+    /* position: relative; */
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* width: 100%; */
+    height: 100%;
+    /* z-index: -1; */
+    
 }
 
 #app .home__wrap {
-position: absolute;
-top: 65%;
-left: 10%;
-width: 35vw;
-font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+    width: 75vw;
+    font-family: 'Montserrat', sans-serif;
 }
 
 #app .home__wrap p {
     /* text-align: center; */
-    color: white;
-    font-size: 80px;
+    color: #fff;
+    font-size: 36px;
     font-weight: 200;
     letter-spacing: .25rem;
+}
+
+#app .home__mission {
+    padding: 0 35px 30px 35px;
+}
+
+#app .home__mission span {
+    font-size: 10px;
+    text-transform: uppercase;
+    line-height: 2;
+    font-weight: 700;
+}
+
+#app .home__mission p {
+    font-size: 20px;
+    margin-top: 20px;
+    /* font-family: 'Lora', sans-serif; */
+    color: #3a3a3a;
 }
 
 /* about */
@@ -122,22 +175,26 @@ font-family: 'Montserrat', sans-serif;
     position: relative;
     margin-bottom: 40px;
     background-image: url(../assets/about.jpg);
+    background-position: 50% 50%;
     background-size: cover;
     background-repeat: no-repeat;
-    height: 90vh;
+    max-width: 100%;
+    min-height: 90vh;
     font-family: 'Montserrat', sans-serif;
 }
 
 #app .about__wrap {
+    width: 100%;
+    padding: 0 35px;
     position: absolute;
-    top: 65%;
+    top: 50%;
     left: 50%;
     transform: translateX(-50%);
 }
 
 #app h1 {
     margin-bottom: 30px;
-    font-size: 40px;
+    font-size: 32px;
     text-align: center;
     text-transform: uppercase;
     font-weight: 300;
@@ -148,18 +205,20 @@ font-family: 'Montserrat', sans-serif;
 #app .about__me p {
     text-align: center;
     color: white;
-    font-size: 18px;
-    font-weight: 200;
+    font-size: 15px;
+    font-weight: 300;
     letter-spacing: .25rem;
 }
 
 #app .block__text {
-    padding: 40px 60px;
+    /* padding: 40px 60px; */
+    padding: 30px 15px;
 }
 
 #app .text__about {
-    width: 55vw;
-    margin: 0 auto;
+    /* width: 55vw; */
+    /* margin: 0 auto; */
+    text-align: left;
 }
 
 #app .text__about h2 {
@@ -205,6 +264,321 @@ font-family: 'Montserrat', sans-serif;
 /* kontakt */
 
 #app .wrap__contact {
+    height: 120vh;
+    margin: 20px 0;
+    position: relative;
+}
+
+#app .backgroud {
+    position: absolute;
+    top: 40vh;
+    left: 0;
+    width: 100%;
+    height: 40vh;
+    /* background-color: rgb(212, 238, 247); */
+    background-color: #EAE3C9;
+}
+
+#app .form__contact {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    /* height: 70vh; */
+    height: 70%;
+    background-color: #fff;
+    box-shadow: 0 0 1em #ccc;
+}
+
+#app .form {
+    height: 90%;
+}
+
+#app .form h2 {
+    font-family: 'Montserrat', sans-serif;
+    padding: 30px 20px;
+    font-size: 30px;
+    font-weight: 300;
+    letter-spacing: .25rem;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#app .form input,
+#app .form button,
+#app .form textarea {
+    display: block;
+    font-family: 'Montserrat', sans-serif;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    font-size: 12px;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid black;
+
+}
+
+#app .form input {
+    /* height: 30px; */
+    height: 10%;
+}
+
+#app .form textarea {
+    /* height: 80px; */
+    height: 25%;
+}
+
+#app .form button {
+    font-size: 14px;
+    line-height: 40px;
+    background-color: black;
+    color: white;
+    text-transform: uppercase;
+    margin-bottom: 50px;
+    width: 50%;
+}
+
+#app .wrap__contact .contact__img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    height: 55%;
+    width: 80%;
+    background-image: url(../assets/contact.jpg);
+    background-size: cover;
+    background-position: 65% 50%;
+    background-repeat: no-repeat;
+}
+
+#app .contact {
+    width: 90%;
+    margin: 30px auto 10px auto;
+    padding: 10px 0;
+    border-top: 2.5px solid #333;
+    text-align: center;
+}
+
+#app .contact p {
+    font-size: 10px;
+    line-height: 25px;
+}
+
+@media screen and (min-width: 360px) {
+    #app .wrap__contact {
+        height: 100vh;
+    }
+    
+    #app .backgroud {
+        top: 30vh;
+        left: 0;
+        width: 100%;
+        height: 40vh;
+    }
+
+    #app .wrap__contact .contact__img {
+        height: 55%;
+    }
+    
+    #app .form__contact {
+        height: 58%;
+    }
+}
+
+@media screen and (min-width: 375px) and (min-height: 730px) {
+    #app .form__contact {
+        height: 52%;
+    }
+}
+
+@media screen and (orientation: landscape) and (min-width: 533px){
+    #app .wrap__contact {
+        height: 200vh;
+    }
+    
+    #app .backgroud {
+        top: 70vh;
+        left: 0;
+        width: 100%;
+        height: 60vh;
+    }
+}
+
+@media screen and (min-width: 768px) {
+   #app .wrap__contact {
+    height: 80vh;
+}
+
+#app .backgroud {
+    top: 25vh;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+}
+
+#app .form__contact {
+    /* top: 17vh; */
+    top: 20%;
+    left: 5%;
+    transform: translateX(0);
+    width: 65%;
+    /* height: 46vh; */
+    height: 60%;
+}
+
+#app .form h2 {
+    font-size: 40px;
+}
+
+#app .form input,
+#app .form button,
+#app .form textarea {
+    font-size: 16px;
+}
+
+#app .form input {
+    height: 40px;
+}
+
+#app .form textarea {
+    height: 110px;
+}
+
+#app .wrap__contact .contact__img {
+    left: 60%;
+    height: 100%;
+    width: 70%;
+    background-position: 55% 50%;
+}
+
+#app .contact p {
+    font-size: 16px;
+}
+}
+
+@media screen and (orientation: landscape) and (min-width: 800px) and (max-width: 1023){
+    #app .wrap__contact {
+        height: 200vh;
+    }
+    
+    #app .backgroud {
+        top: 70vh;
+        left: 0;
+        width: 100%;
+        height: 60vh;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+#app .backgroud {
+    top: 25vh;
+    height: 30vh;
+}
+
+#app .form__contact {
+    /* top: 10vh; */
+    top: 10%;
+    left: 10%;
+    width: 45%;
+    /* height: 60vh; */
+    height: 80%;
+}
+ 
+ #app .wrap__contact .contact__img {
+     left: 65%;
+     height: 100%;
+     width: 50%;
+     background-position: 55% 50%;
+ }
+ 
+ #app .contact p {
+     font-size: 13px;
+ }
+ }
+
+ @media screen and (min-width: 1366px) {
+    #app .form__contact {
+        /* top: 13vh; */
+        top: 15%;
+        left: 10%;
+        width: 45%;
+        /* height: 54vh; */
+        height: 70%;
+    }
+
+    #app .form h2 {
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 1440px) {
+    #app .form__contact {
+        top: 10%;
+        left: 15%;
+        width: 35%;
+        height: 80%;
+    }
+
+    #app .form h2 {
+        font-size: 36px;
+    }
+    
+    #app .form input,
+    #app .form button,
+    #app .form textarea {
+        font-size: 13px
+    }
+
+    #app .form input{
+        height: 10%;
+    }
+    
+    #app .form textarea {
+        height: 25%;
+    }
+
+    #app .wrap__contact .contact__img {
+        left: 65%;
+        height: 100%;
+        width: 45%;
+        background-position: 55% 50%;
+    }
+}
+/* footer */
+
+footer {
+    width: 70%;
+    margin: 0 auto;
+    border-top: 2.5px solid #333;
+}
+
+footer p {
+    color: black;
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 15px;
+}
+
+footer #facebook {
+    background-image: url(../assets/facebook-brands.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 30px;
+    border-bottom: none;
+}
+
+footer #instagram {
+    background-image: url(../assets/instagram-brands.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-bottom: none;
+}
+
+/* kontakt na laptopie */
+
+/* #app .wrap__contact {
     height: 80vh;
     margin: 20px 0;
     position: relative;
@@ -216,7 +590,7 @@ font-family: 'Montserrat', sans-serif;
     left: 0;
     width: 100%;
     height: 20vh;
-    /* background-color: rgb(212, 238, 247); */
+    background-color: rgb(212, 238, 247);
     background-color: #EAE3C9;
 }
 
@@ -294,23 +668,8 @@ font-family: 'Montserrat', sans-serif;
     padding: 10px 0;
     border-top: 2.5px solid #333;
     text-align: center;
-}
+} */
 
-#app .contact p {
+/* #app .contact p {
     line-height: 45px;
-}
-
-/* footer */
-
-footer {
-    width: 50%;
-    margin: 0 auto;
-    border-top: 2.5px solid #333;
-}
-
-footer p {
-    color: black;
-    text-align: center;
-    padding: 2rem 0;
-    font-size: 20px;
-}
+} */
