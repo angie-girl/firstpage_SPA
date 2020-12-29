@@ -12,13 +12,24 @@ export default class extends AbstractView {
         <video [muted]="true" autoplay playsinline loop id="background-video">
             <source src="static/assets/Flower.mp4" type="video/mp4" />
         </video>
-        </div>
         <div class="home__wrap">
-        <p>Moments that <i>move<i>.</p>
+        <p>Moments that <i>move</i>.</p>
+        </div>
         </div>
         <div class="home__mission">
-        <h1>Our mission</h1>
-        <p>We create moments that move.</p>
+        <span>Our mission</span>
+        <p>We create moments that <i>move</i>.</p>
+        <p>Moments that <i>move emotions,</i>
+        to create joy, to inspire,
+        to excite. Moments that
+        <i>move individuals to act,</i>
+        to purchase, to experience,
+        to advocate. Moments that
+        <i>move brands forward,</i> cohesively
+        elevating them to be more
+        distinguished, more desirable
+        & relevant.
+        </p>
         </div>
         `
     }
